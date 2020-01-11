@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Youtube Data Analysis: 2007-2017</title>
+    <title>Line Graph for Youtube Data Analysis: 2007-2017</title>
 
     <!-- Boostrap Stylesheet -->
-    <link rel="stylesheet" href="index_assets/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="../index_assets/css/bootstrap.min.css" media="screen">
 
     <!-- Our own CSS stylesheet -->
-    <link rel="stylesheet" href="index_assets/css/styles.css" media="screen">
+    <link rel="stylesheet" href="../index_assets/css/styles.css" media="screen">
 
   </head>
 
@@ -31,7 +31,7 @@
               <span class="icon-bar"></span>
             </button>
             <div class="col-xs-9 phone-nav">
-              <a class="navbar-brand" href="#" id="logo">Youtube</a>
+              <a class="navbar-brand" href="../index.html" id="logo">Youtube</a>
             </div>
           </div>
 
@@ -41,14 +41,14 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                 <li><a href="html/bar.html">Category Popularity</a></li>
-                  <li><a href="html/bubble.html">Likes and Dislikes</a></li>
-                  <li><a href="html/line.html">Views vs Time</a></li>
-                  <li><a href="html/wind.html">Wind Speed</a></li>
+                  <li><a href="../html/bar.html">Category Popularity</a></li>
+                  <li><a href="../html/bubble.html">Likes and Dislikes</a></li>
+                  <li><a href="../html/line.html">Views vs Time</a></li>
+                  <li><a href="../html/wind.html">Wind Speed</a></li>
                 </ul>
               </li>
-              <li><a href="comparison.html">Comparison</a></li>
-              <li><a href="data.html">Data</a></li>
+              <li><a href="../comparison.html">Comparison</a></li>
+              <li><a href="../data.html">Data</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div>
@@ -61,11 +61,10 @@
       <section class="row">
         <div class="col-md-8">
           <article class="description-content">
-            <h1 class="description-header">Home</h1>
+            <h1 class="description-header">Views vs Time</h1>
             <hr class="description-hr"/>
-            <img src="index_assets/images/Fig1.png" alt="" id="description-image"/>
-            <p>The purpose of this project was to analyze how weather changes as you get closer to the equator. To accomplish this analysis, we first pulled data from the OpenWeatherMap API to assemble a dataset on over 500 cities.</p>
-            <p>After assembling the dataset, we used Matplotlib to plot various aspects of the weather vs. latitude. Factors we looked at included: temperature, cloudiness, wind speed, and humidity. This site provides the source data and visualizations created as part of the analysis, as well as explanations and descriptions of any trends and correlations witnessed.</p>
+            <img src="../index_assets/images/Fig2.png" alt="" class="img-responsive"/>
+            <p>With our current analysis, it is difficult to find any obvious correlation between latittude and humidity. There is a clear band of many data points at 100% humidity, and there do seem to be strong clusters of high humidity around the equator and in some other areas (e.g. a strong band of 0% humidity at latitude > 60). Further analysis is required.</p>
           </article>
         </div>
         <div class="col-md-4">
@@ -73,13 +72,13 @@
           <!-- Start of Visualizations imageNav Area -->
           <section id="imageNav-area">
             <div class="imageNav-content">
-              <h2 class="imageNav-header">Analyses</h2>
+              <h2 class="imageNav-header">Visualizations</h2>
               <hr />
               <div id="images">
-                <a href="html/bar.html"><img src="index_assets/images/Fig1.png" alt="Category Popularity" class="imageNav-photo"></a>
-                <a href="html/bubble.html"><img src="index_assets/images/Fig2.png" alt="Likes and Dislikes" class="imageNav-photo"></a>
-                <a href="html/line.html"><img src="index_assets/images/Fig3.png" alt="Views vs Time" class="imageNav-photo"></a>
-                <a href="html/wind.html"><img src="index_assets/images/Fig4.png" alt="Latitude vs. Wind Speed" class="imageNav-photo"></a>
+                <a href="../html/bar.html"><img src="../index_assets/images/Fig1.png" alt="Category Popularity" class="imageNav-photo"></a>
+                <a href="../html/bubble.html"><img src="../index_assets/images/Fig2.png" alt="Likes and Dislikes" class="imageNav-photo"></a>
+                <a href="../html/line.html"><img src="../index_assets/images/Fig3.png" alt="Views vs Time" class="imageNav-photo"></a>
+                <a href="../html/wind.html"><img src="../index_assets/images/Fig4.png" alt="Latitude vs. Wind Speed" class="imageNav-photo"></a>
               </div>
             </div>
           </section>
@@ -94,7 +93,7 @@
     <footer class="footer navbar-fixed-bottom">
       <div class="two-toned-footer-color"></div>
       <p class="text-muted text-muted-footer text-center">
-        by: Shawn Advani ~ Sabir Samlani ~ Olesea Armasari ~ Rocio Zambrano ~ Sherwin Macalintal
+        &copy; Copyright Coding Bootcamp 2017
       </p>
     </footer>
     <!-- End of footer -->
