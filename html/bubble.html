@@ -1,3 +1,5 @@
+<!-- Likes and Dislikes -->
+
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
@@ -43,8 +45,8 @@
                 <ul class="dropdown-menu">
                   <li><a href="../html/bar.html">Category Popularity</a></li>
                   <li><a href="../html/bubble.html">Likes and Dislikes</a></li>
-                  <li><a href="../html/line.html">Views vs Time</a></li>
-                  <li><a href="../html/wind.html">Wind Speed</a></li>
+                  <li><a href="../html/lineUS.html">Views vs Time</a></li>
+                  <li><a href="../html/lineGB.html">Wind Speed</a></li>
                 </ul>
               </li>
               <li><a href="../comparison.html">Comparison</a></li>
@@ -63,7 +65,10 @@
           <article class="description-content">
             <h1 class="description-header">Likes and Dislikes</h1>
             <hr class="description-hr"/>
-            <img src="../index_assets/images/Fig3.png" alt="" class="img-responsive"/>
+            <div id="scatter">
+              <!-- We append our chart here. -->
+            </div>    
+            <!-- <img src="../index_assets/images/Fig3.png" alt="" class="img-responsive"/> -->
             <p>There is no strong relationship between latitude and cloudiness, however, it is interesting to see that a strong band of cities sits at 0, 80, and 100% cloudiness.</p>
           </article>
         </div>
@@ -77,8 +82,8 @@
               <div id="images">
                 <a href="../html/bar.html"><img src="../index_assets/images/Fig1.png" alt="Category Popularity" class="imageNav-photo"></a>
                 <a href="../html/bubble.html"><img src="../index_assets/images/Fig2.png" alt="Likes and Dislikes" class="imageNav-photo"></a>
-                <a href="../html/line.html"><img src="../index_assets/images/Fig3.png" alt="Views vs Time" class="imageNav-photo"></a>
-                <a href="../html/wind.html"><img src="../index_assets/images/Fig4.png" alt="Latitude vs. Wind Speed" class="imageNav-photo"></a>
+                <a href="../html/lineUS.html"><img src="../index_assets/images/Fig3.png" alt="US: Views vs Time" class="imageNav-photo"></a>
+                <a href="../html/lineGB.html"><img src="../index_assets/images/Fig4.png" alt="GB: Views vs Time" class="imageNav-photo"></a>
               </div>
             </div>
           </section>
@@ -103,6 +108,18 @@
 
     <!-- Bootstrap CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+    <script type="text/javascript" src="js/appBubbleChart.js"></script>
+
+
   </body>
 
 </html>
