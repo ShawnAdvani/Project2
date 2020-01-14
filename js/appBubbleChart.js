@@ -24,14 +24,15 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Initial Params
-var chosenXAxis = "poverty";
+var chosenXAxis = "US";
+var chosenYAxis = "Likes";
 
 // function used for updating x-scale var upon click on axis label
-function xScale(povData, chosenXAxis) {
+function xScale(vidData, chosenXAxis) {
   // create scales
   var xLinearScale = d3.scaleLinear()
-    .domain([d3.min(povData, d => (d[chosenXAxis]) * 0.8),
-      d3.max(povData, d => d[chosenXAxis]) * 1.2])
+    .domain([d3.min(vidData, d => (d[chosenXAxis]) * 0.8),
+      d3.max(vidData, d => d[chosenXAxis]) * 1.2])
     .range([0, width]);
 
   return xLinearScale;
@@ -47,6 +48,30 @@ function renderAxes(newXScale, xAxis) {
 
   return xAxis;
 }
+
+// function used for updating y-scale var upon click on axis label
+function yScale(vidData, chosenYAxis) {
+  // create scales
+  var yLinearScale = d3.scaleLinear()
+    .domain([d3.min(vidData, d => (d[chosenYAxis]) * 0.8),
+      d3.max(vidData, d => (d[chosenYAxis]) + 5)])
+    .range([height, 0]);
+
+  return yLinearScale;
+}
+
+
+// function used for updating YAxis var upon click on axis label
+function renderYaxes(newYScale, yAxis) {
+  var leftAxis = d3.axisBottom(newYScale);
+
+  xAxis.transition()
+    .duration(1000)
+    .call(leftAxis);
+
+  return yAxis;
+}
+
 
 // function used for updating circles group with a transition to
 // new circles
@@ -75,18 +100,18 @@ function renderTexts(textsGroup, newXScale, chosenXAxis) {
 // function used for updating circles group with new tooltip
 function updateToolTip(chosenXAxis, circlesGroup) {
 
-  if (chosenXAxis === "poverty") {
-    var label = "Poverty:";
+  if (chosenXAxis === "US") {
+    var label = "United States Likes";
   }
   else {
-    var label = "Age:";
+    var label = "Great Britain Likes";
   }
 
   var toolTip = d3.tip()
     .attr("class", "tooltip")
     .offset([80, -60])
     .html(function(d) {
-      return (`State: ${d.state}<br>${label} ${d[chosenXAxis]}`);
+      return (`Category ID: ${d.category_id}<br>${label} ${d[chosenXAxis]}`);
     });
 
   circlesGroup.call(toolTip);
@@ -103,23 +128,22 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 }
 
 // Import Data
-d3.csv("assets/data/data.csv").then(function(povData) {
+d3.csv("db/raw_data/USvideos_catID.csv").then(function(vidData) {
 
     // Step 1: Parse Data/Cast as numbers
     // ==============================
-    povData.forEach(function(data) {
-      data.poverty = parseFloat(data.poverty);
-      data.age = parseFloat(data.age);
-      data.healthcare = parseFloat(data.healthcare);
+    vidData.forEach(function(data) {
+      data.category_id = parseFloat(data.category_id);
+      data.views = parseFloat(data.views);
+      data.likes = parseFloat(data.likes);
+      data.dislikes = parseFloat(data.dislikes);
     });
 
     // Step 2: Create scale functions
     // ==============================
-    var xLinearScale = xScale(povData, chosenXAxis);
+    var xLinearScale = xScale(vidData, chosenXAxis);
+    var yLinearScale = yScale(vidData, chosenYAxis);
 
-    var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(povData, d => d.healthcare)+5])
-      .range([height, 0]);
 
     // Create axis functions
 
@@ -133,16 +157,18 @@ d3.csv("assets/data/data.csv").then(function(povData) {
       .call(bottomAxis);
 
     // append y axis
-    chartGroup.append("g")
+    var yAxis = chartGroup.append("g")
+      .classed("y-axis", true)
+      .attr("transform", `translate(0, ${height})`)
       .call(leftAxis);
 
     //Create Circles
     var circlesGroup = chartGroup.selectAll("circle")
-    .data(povData)
+    .data(vidData)
     .enter()
     .append("circle")
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
-    .attr("cy", d => yLinearScale(d.healthcare))
+    .attr("cy", d => yLinearScale(d[chosenYAxis]))
     .attr("r", "12")
     .style("stroke-width", 1.5)
     .style("fill", "blue")
@@ -150,22 +176,22 @@ d3.csv("assets/data/data.csv").then(function(povData) {
     .style("stroke", "black");
     
     // Create group for  2 x- axis labels
-    var labelsGroup = chartGroup.append("g")
+    var xlabelsGroup = chartGroup.append("g")
     .attr("transform", `translate(${width / 2}, ${height + 20})`);
 
-    var povertyLabel = labelsGroup.append("text")
+    var USviewsLabel = xlabelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 20)
     .attr("value", "poverty") // value to grab for event listener
     .classed("active", true)
-    .text("In Poverty (%)");
+    .text("United States Likes");
 
-    var ageLabel = labelsGroup.append("text")
+    var GBviewsLabel = xlabelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 40)
     .attr("value", "age") // value to grab for event listener
     .classed("inactive", true)
-    .text("Age (Median)");
+    .text("Great Britain Likes");
 
     // Create y axis labels
     chartGroup.append("text")
@@ -219,11 +245,11 @@ labelsGroup.selectAll("text")
     circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
 
     // changes classes to change bold text
-    if (chosenXAxis === "age") {
-        ageLabel
+    if (chosenXAxis === "US") {
+        USviewsLabel
             .classed("active", true)
             .classed("inactive", false);
-        povertyLabel
+        GBviewsLabel
             .classed("active", false)
             .classed("inactive", true);
     }
