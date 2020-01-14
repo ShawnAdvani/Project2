@@ -13,6 +13,7 @@ engine = create_engine(f'postgresql://{rds_connection_string}')
 
 
 
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -24,7 +25,6 @@ def GB():
     conn = engine.connect()
     df = pd.read_sql('SELECT * FROM public."GBdata"', conn)
     conn.close()
-    print(df.head)
     return df.to_json(orient="index")
 
 @app.route("/US")
@@ -32,8 +32,26 @@ def US():
     conn = engine.connect()
     df = pd.read_sql('SELECT * FROM public."USdata"', conn)
     conn.close()
-    print(df.head)
     return df.to_json(orient="index")
+
+@app.route("/GBcat")
+def GBcat():
+    conn = engine.connect()
+    df = pd.read_sql('SELECT * FROM public."GBdata"', conn)
+    conn.close()
+    df2 = df.groupby(["category"]).views.mean()
+    print(df2.head)
+    return df2.to_json(orient="index")
+
+@app.route("/UScat")
+def UScat():
+    conn = engine.connect()
+    df = pd.read_sql('SELECT * FROM public."USdata"', conn)
+    conn.close()
+    df2 = df.groupby(["category"]).views.mean()
+    del df2['Nonprofits & Activism']
+    print(df2.head)
+    return df2.to_json(orient="index")
 
 if __name__ == "__main__":
     app.run(debug=True)
