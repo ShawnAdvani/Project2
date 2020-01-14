@@ -11,13 +11,7 @@ engine = create_engine(f'postgresql://{rds_connection_string}')
 
 # conn = engine.connect()
 
-conn = engine.connect()
-df = pd.read_sql('SELECT * FROM public."GBdata" LIMIT 100', conn)
-print(df.head())
-# base = automap_base()
-# base.prepare(engine, reflect=True)
-# dataGB = base.classes.GBdata
-# dataUS = base.classes.USdata
+
 
 app = Flask(__name__)
 
@@ -27,14 +21,18 @@ def index():
 
 @app.route("/GB")
 def GB():
+    conn = engine.connect()
     df = pd.read_sql('SELECT * FROM public."GBdata"', conn)
     conn.close()
+    print(df.head)
     return df.to_json(orient="index")
 
 @app.route("/US")
 def US():
+    conn = engine.connect()
     df = pd.read_sql('SELECT * FROM public."USdata"', conn)
     conn.close()
+    print(df.head)
     return df.to_json(orient="index")
 
 if __name__ == "__main__":
