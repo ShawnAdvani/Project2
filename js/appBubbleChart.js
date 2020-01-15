@@ -218,8 +218,8 @@ d3.csv("db/raw_data/USvideos_catID.csv").then(function(vidData) {
     var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
 
 
-// x axis labels event listener
-labelsGroup.selectAll("text")
+  // x axis labels event listener
+  labelsGroup.selectAll("text")
 .on("click", function() {
   // get value of selection
   var value = d3.select(this).attr("value");

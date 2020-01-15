@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\sadva\\AppData\\Local\\Continuum\\anaconda3\\python.exe"
+    "python.pythonPath": "/anaconda3/envs/pet_pals_env/bin/python",
+    "python.linting.pylintEnabled": true
 }

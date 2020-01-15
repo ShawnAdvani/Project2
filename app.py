@@ -91,5 +91,20 @@ def UStime():
     conn.close()
     return df.to_json(orient="index")
 
+@app.route("/GBlikes")
+def GBlikes():
+    conn = engine.connect()
+    df = pd.read_sql('SELECT * FROM public."GBdata_sumCat"', conn)
+    conn.close()
+    return df.to_json(orient="index")
+
+@app.route("/USlikes")
+def USlikes():
+    conn = engine.connect()
+    df = pd.read_sql('SELECT * FROM public."USdata_sumCat"', conn)
+    conn.close()
+    return df.to_json(orient="index")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
