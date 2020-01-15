@@ -23,14 +23,14 @@
 
   </head>
 <body>
-  <script src="{{url_for('static', filename='js/appBarChart.js')}}"></script>
-  <script src="{{url_for('static', filename='js/appGBLineChart.js')}}"></script>
-
-  <a href="{{url_for('bubble')}}">Likes vs. Dislikes</a>
+  
+  <script src="{{url_for('static', filename='js/appBubbleChart.js')}}"></script>
+  
   <a href="{{url_for('bar')}}">Ave Views by Category</a>
   <a href="{{url_for('line')}}">Views through Time</a>
+  <a href="{{url_for('index')}}">Home</a>
 
-  <canvas id="bar-chart" width="400" height="400"></canvas>
-  <canvas id="line-chart" width="400" height="400"></canvas>
+  <canvas id="bubble-chart" width="400" height="400"></canvas>
+
 </body>
 </html>

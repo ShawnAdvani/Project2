@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Bootstrap Visualization Dashboard</title>
+
+    <!-- Boostrap Stylesheet -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" media="screen">
+
+    <!-- Our own CSS stylesheet -->
+    <link rel="stylesheet" href="static/css/styles.css" media="screen">
+
+    <!-- jQuery CDN -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Bootstrap CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- D3 CDN -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Chart CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <!-- color palette -->
+    <script type="text/javascript" src="Chart.js"></script>
+    <script type="text/javascript" src="chartjs-plugin-colorschemes.js"></script>
+
+  </head>
+
+  <body>
+    <!-- Start of navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid navbar-custom">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-xs-9 phone-nav">
+              <a class="navbar-brand" href="{{url_for('index')}}" id="logo">Youtube</a>
+            </div>
+          </div>
+
+          
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- End of navbar -->
+
+    <!-- Start of container -->
+    <div class="container">
+      <section class="row">
+        <div class="col-md-8">
+          <article class="description-content">
+            <h1 class="description-header">Average Views by Category</h1>
+            <hr class="description-hr"/>
+
+            <div class="myGraph">
+            <canvas id="bar-chart" width="200" height="200"></canvas>
+            </div>
+
+            <p>There is no strong relationship between latitude and cloudiness, however, it is interesting to see that a strong band of cities sits at 0, 80, and 100% cloudiness.</p>
+          </article>
+        </div>
+        <div class="col-md-4">
+
+          <!-- Start of Visualizations imageNav Area -->
+          <section id="imageNav-area">
+            <div class="imageNav-content">
+                <h2 class="imageNav-header">Analyses</h2>
+                <hr />
+                <div id="images">
+                  <a href="{{url_for('bar')}}"><img src="static/images/Fig1.png" alt="Average Views by Category" class="imageNav-photo"></a>
+                  <a href="{{url_for('bubble')}}"><img src="static/images/Fig2.png" alt="Likes vs. Dislikes" class="imageNav-photo"></a>
+                  <a href="{{url_for('line')}}"><img src="static/images/Fig3.png" alt="Views through Time" class="imageNav-photo"></a>
+                  <a href="{{url_for('doughnut')}}"><img src="static/images/Fig4.png" alt="Views through Time" class="imageNav-photo"></a>
+                </div>
+            </div>
+          </section>
+          <!-- End of the Visualizations imageNav Area -->
+
+        </div>
+      </section>
+    </div>
+    <!-- End of container -->
+
+    <!-- Start of footer -->
+    <footer class="footer navbar-fixed-bottom">
+      <div class="two-toned-footer-color"></div>
+      <p class="text-muted text-muted-footer text-center">
+        by: Shawn Advani ~ Sabir Samlani ~ Olesea Armasari ~ Rocio Zambrano ~ Sherwin Macalintal
+      </p>
+    </footer>
+    <!-- End of footer -->
+
+    <!-- Line chart -->
+    <script src="{{url_for('static', filename='js/appBarChart.js')}}"></script>
+
+    <!-- jQuery CDN -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Bootstrap CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </body>
+
+</html>

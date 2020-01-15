@@ -4,71 +4,86 @@ d3.json("/USlikes").then(function (usdata) {
     console.log(usdata)
     console.log(gbdata)
 
-    var objs = Object.values(gbdata);
-    
-    var gbLabels = [];
-    for (var i = 0; i < objs.length; i++) {
-      gbLabels.push(objs[i].category);
-    }
-    console.log(gbLabels)
+    var GBobjs = Object.values(gbdata);
 
-    // var gbLikes = [];
-    // for (var i = 0; i < objs.length; i++) {
-    //     gbLikes.push(objs[i].likes);
-    // }
-    // console.log(gbLikes)
+    labels = Object.keys(gbdata)
 
-    // var gbViews = [];
-    // for (var i = 0; i < objs.length; i++) {
-    //     gbViews.push(objs[i].views);
-    // }
-    // console.log(gbViews)
-
-    var storage = [];
-    for(var i = 0; i < objs.length; i++)
+    var GBstorage = [];
+    for(var i = 0; i < GBobjs.length; i++)
         { 
-          var GBjson = {x: objs[i].views, y: objs[i].likes, r:((objs[i].views/objs[i].likes)/10)};
-          storage.push(GBjson) 
+          var GBjson = {x: GBobjs[i].likes/1000, y: GBobjs[i].dislikes/1000, r:(GBobjs[i].likes/GBobjs[i].dislikes)};
+          GBstorage.push(GBjson) 
         }
-    console.log(storage)
+    console.log(GBstorage)
 
-    var objs = Object.values(usdata);
-    var usLikes = [];
-    for (var i = 0; i < objs.length; i++) {
-        usLikes.push(objs[i].likes);
-    }
-    console.log(usLikes)
+    
+    var USobjs = Object.values(usdata);
+
+    var USstorage = [];
+    for(var i = 0; i < USobjs.length; i++)
+        { 
+          var USjson = {x: USobjs[i].likes/1000, y: USobjs[i].dislikes/1000, r:(USobjs[i].likes/USobjs[i].dislikes)};
+          USstorage.push(USjson) 
+        }
+    console.log(USstorage)
+
+
+    // var objs = Object.values(usdata);
+    // var usLikes = [];
+    // for (var i = 0; i < objs.length; i++) {
+    //     usLikes.push(objs[i].likes);
+    // }
+    // console.log(usLikes)
 
     new Chart(document.getElementById("bubble-chart"), {
       type: 'bubble',
       data: {
-        labels: gbLabels,
+        // labels: labels,
         datasets: [
           {
-            label: gbLabels,
-            backgroundColor: "rgba(255,221,50,0.2)",
-            borderColor: "rgba(255,221,50,1)",
-            data: storage
+            label: "GB",
+            backgroundColor: "rgb(18, 18, 241, 0.3) ",
+            borderColor: "black",
+            data: GBstorage 
+          }, 
+          {
+            label: "US",
+            backgroundColor: "rgb(241, 18, 18, 0.3)",
+            borderColor: "black",
+            data: USstorage
           }
         ]
       },
       options: {
         title: {
           display: true,
-          text: 'Views vs. Likes'
+          text: 'Likes vs. Dislikes'
         }, scales: {
           yAxes: [{ 
             scaleLabel: {
               display: true,
-              labelString: "Likes"
+              labelString: "Dislikes"
+            },
+            ticks: {
+              max: 1400,
+              min: 0,
             }
           }],
           xAxes: [{ 
             scaleLabel: {
               display: true,
-              labelString: "Views"
+              labelString: "Likes"
+            },
+            ticks: {
+              max: 60000,
+              min: 0,
             }
-          }]
+          }],
+          plugins: {
+            colorschemes: {
+              scheme: 'brewer.Paired12'
+            }
+          }
         }
       }
     });

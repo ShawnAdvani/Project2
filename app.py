@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 
-rds_connection_string = "postgres:postgres@localhost:5432/YouTube"
+rds_connection_string = "postgres:JusticeLeague1981!@localhost:5432/YouTube"
 engine = create_engine(f'postgresql://{rds_connection_string}')
 
 conn = engine.connect()
@@ -20,7 +20,23 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('index2.html')
+
+@app.route("/bubble")
+def bubble():
+    return render_template('bubble2.html')
+
+@app.route("/line")
+def line():
+    return render_template('line2.html')
+
+@app.route("/bar")
+def bar():
+    return render_template('bar2.html')
+
+@app.route("/doughnut")
+def doughnut():
+    return render_template('doughnut2.html')
 
 @app.route("/GB")
 def GB():
@@ -102,6 +118,20 @@ def GBlikes():
 def USlikes():
     conn = engine.connect()
     df = pd.read_sql('SELECT * FROM public."USdata_sumCat"', conn)
+    conn.close()
+    return df.to_json(orient="index")
+
+@app.route("/GBTopLikes")
+def GBTopLikes():
+    conn = engine.connect()
+    df = pd.read_sql('SELECT * FROM public."GBdata_sumCat" ORDER BY likes', conn)
+    conn.close()
+    return df.to_json(orient="index")
+
+@app.route("/USTopLikes")
+def USTopLikes():
+    conn = engine.connect()
+    df = pd.read_sql('SELECT * FROM public."USdata_sumCat" ORDER BY likes', conn)
     conn.close()
     return df.to_json(orient="index")
 

@@ -102,6 +102,14 @@ body {
   }
 }
 
+.sigline{
+
+  color: #e11b1b;
+  font-size: 20px;
+  text-align: right;
+  font-family: Arial, Helvetica, sans-serif
+}
+
 /* -----NAV END---- */
 
 /* ----DESCRIPTION START---- */
@@ -190,6 +198,10 @@ body {
   font-size: 25px;
   font-weight: bold;
   color: #e11b1b;
+}
+
+.myGraph {
+  background-color: #ffffff;
 }
 
 .imageNav-photo {
