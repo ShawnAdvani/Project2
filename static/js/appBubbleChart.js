@@ -6,8 +6,6 @@ d3.json("/USlikes").then(function (usdata) {
 
     var GBobjs = Object.values(gbdata);
 
-    labels = Object.keys(gbdata)
-
     var GBstorage = [];
     for(var i = 0; i < GBobjs.length; i++)
         { 
@@ -15,6 +13,25 @@ d3.json("/USlikes").then(function (usdata) {
           GBstorage.push(GBjson) 
         }
     console.log(GBstorage)
+
+    var GBLabels = [];
+    for(var i = 0; i < GBobjs.length; i++)
+        { 
+          GBLabels.push(gbdata[i].category);
+        }
+    console.log(GBLabels)
+
+
+    // GBparsedata = [];
+    // for (var i = 0; i < GBstorage.length; i++){
+    //   GBparsedata.push({
+    //     label:GBLabels[i],
+    //     data:[GBstorage[i]],
+    //     backgroundColor: "rgb(18, 18, 241, 0.3)",
+    //     borderColor: "black"
+    //   });
+    // }
+    // console.log(GBparsedata)
 
     
     var USobjs = Object.values(usdata);
@@ -27,13 +44,24 @@ d3.json("/USlikes").then(function (usdata) {
         }
     console.log(USstorage)
 
+    var USLabels = [];
+    for(var i = 0; i < USobjs.length; i++)
+        { 
+          USLabels.push(usdata[i].category);
+        }
+    console.log(USLabels)
 
-    // var objs = Object.values(usdata);
-    // var usLikes = [];
-    // for (var i = 0; i < objs.length; i++) {
-    //     usLikes.push(objs[i].likes);
+    // USparsedata = [];
+    // for (var i = 0; i < USstorage.length; i++){
+    //   USparsedata.push({
+    //     label:USLabels[i],
+    //     data:USstorage[i],
+    //     backgroundColor: "rgb(241, 18, 18, 0.3)",
+    //     borderColor: "black"
+    //   });
     // }
-    // console.log(usLikes)
+    // console.log(USparsedata)
+
 
     new Chart(document.getElementById("bubble-chart"), {
       type: 'bubble',
@@ -41,24 +69,33 @@ d3.json("/USlikes").then(function (usdata) {
         // labels: labels,
         datasets: [
           {
-            label: "GB",
-            backgroundColor: "rgb(18, 18, 241, 0.3) ",
-            borderColor: "black",
-            data: GBstorage 
+            labels: USLabels,
+            data: GBstorage,
+            backgroundColor: "rgb(18, 18, 241, 0.3)",
+            borderColor: "black"
           }, 
           {
-            label: "US",
+            labels: USLabels,
+            data: USstorage,
             backgroundColor: "rgb(241, 18, 18, 0.3)",
-            borderColor: "black",
-            data: USstorage
+            borderColor: "black"
           }
         ]
       },
       options: {
+        tooltips: {
+          callbacks: {
+             label: function(tooltipItem, data) {
+                var label = data.labels[tooltipItem.index];
+                return label + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ')';
+             }
+          }
+       },
         title: {
           display: true,
           text: 'Likes vs. Dislikes'
-        }, scales: {
+        },
+        scales: {
           yAxes: [{ 
             scaleLabel: {
               display: true,
