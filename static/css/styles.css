@@ -160,6 +160,17 @@ body {
   margin-right: 20px;
 }
 
+#description-image2 {
+  /* Positioning */
+  float: left;
+
+  /* Box-model */
+  width: 280px;
+  height: 800px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
 /* Description content media query */
 @media only screen and (max-width: 767px) {
   /* override default class styling for positioning/padding */

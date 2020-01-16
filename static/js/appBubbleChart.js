@@ -69,13 +69,13 @@ d3.json("/USlikes").then(function (usdata) {
         // labels: labels,
         datasets: [
           {
-            labels: USLabels,
+            labels: "GB",
             data: GBstorage,
             backgroundColor: "rgb(18, 18, 241, 0.3)",
             borderColor: "black"
           }, 
           {
-            labels: USLabels,
+            labels: "US",
             data: USstorage,
             backgroundColor: "rgb(241, 18, 18, 0.3)",
             borderColor: "black"
@@ -83,14 +83,14 @@ d3.json("/USlikes").then(function (usdata) {
         ]
       },
       options: {
-        tooltips: {
-          callbacks: {
-             label: function(tooltipItem, data) {
-                var label = data.labels[tooltipItem.index];
-                return label + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ')';
-             }
-          }
-       },
+      //   tooltips: {
+      //     callbacks: {
+      //        label: function(tooltipItem, data) {
+      //           var label = data.labels[tooltipItem.index];
+      //           return label + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ')';
+      //        }
+      //     }
+      //  },
         title: {
           display: true,
           text: 'Likes vs. Dislikes'
