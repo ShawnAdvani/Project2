@@ -110,28 +110,28 @@ def UStime():
 @app.route("/GBlikes")
 def GBlikes():
     conn = engine.connect()
-    df = pd.read_sql('SELECT * FROM public."GBdata_sumCat"', conn)
+    df = pd.read_sql('SELECT * FROM public."GBdata_sumCat" ORDER BY category_id ASC', conn)
     conn.close()
     return df.to_json(orient="index")
 
 @app.route("/USlikes")
 def USlikes():
     conn = engine.connect()
-    df = pd.read_sql('SELECT * FROM public."USdata_sumCat"', conn)
+    df = pd.read_sql('SELECT * FROM public."USdata_sumCat" ORDER BY category_id ASC', conn)
     conn.close()
     return df.to_json(orient="index")
 
 @app.route("/GBTopLikes")
 def GBTopLikes():
     conn = engine.connect()
-    df = pd.read_sql('SELECT * FROM public."GBdata_sumCat" ORDER BY likes', conn)
+    df = pd.read_sql('SELECT * FROM public."GBdata_sumCat" ORDER BY likes DESC', conn)
     conn.close()
     return df.to_json(orient="index")
 
 @app.route("/USTopLikes")
 def USTopLikes():
     conn = engine.connect()
-    df = pd.read_sql('SELECT * FROM public."USdata_sumCat" ORDER BY likes', conn)
+    df = pd.read_sql('SELECT * FROM public."USdata_sumCat" ORDER BY likes DESC', conn)
     conn.close()
     return df.to_json(orient="index")
 

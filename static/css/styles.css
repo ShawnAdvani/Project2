@@ -7,6 +7,56 @@ html {
   min-height: 100%;
 }
 
+/* The styles for the parallax */
+.hero {
+  position: relative;
+  height: 800px;
+  padding: 20px;
+  margin: 0;
+  background: black;
+  background-image: url("../images/Fig8.png");
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.hero h1 {
+  margin-top: 300px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 10rem;
+  color: #e11b1b;
+  animation: title 1.2s forwards linear;
+}
+
+.hero h3 {
+  font-size: 5rem;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  color: #ffffff;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 1.2s;
+}
+
+.hero2 {
+  position: relative;
+  height: 200px;
+  padding: 20px;
+  margin: 0;
+  background: black;
+  background-image: url("../images/Fig8.png");
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.hero2 h3 {
+  margin-top: 40px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 5rem;
+  color: #e1e1e1;
+  animation: title 1.2s forwards linear;
+}
+
+
 body {
   /* Positioning */
   margin-bottom: 150px;
@@ -18,12 +68,19 @@ body {
   background-color: #1c1a1a;
 }
 
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 130px;
+  overflow: auto;
+}
+
 /* Media query for body */
 @media only screen and (max-width: 767px) {
   /* Set background color to white on small screens */
   body {
     /* Visual */
-    background-color: #fff;
+    background-color: #1c1a1a;
   }
 }
 
@@ -31,7 +88,7 @@ body {
 
 /* ----NAV START---- */
 .navbar-custom {
-  background-color: #fff;
+  background-color: #e11b1b;
 }
 
 #logo {
@@ -45,9 +102,9 @@ body {
   font-family: Georgia, Times, "Times New Roman", serif;
 
   /* Typography */
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
 
   /* Visual */
   background: #e11b1b;
@@ -71,13 +128,13 @@ body {
 
 /* Nav element hover state */
 .navbar-default .navbar-nav > li > a:hover {
-  color: #e11b1b;
+  color: #ffffff;
 }
 
 /* Media query for nav */
 @media only screen and (max-width: 767px) {
   .navbar-header {
-    background-color: #4aaaa5;
+    background-color: #e11b1b;
   }
 
   #logo {
@@ -95,19 +152,30 @@ body {
     /* Typography */
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
+    color: #ffffff;
 
     /* Visual */
-    background: #4aaaa5;
+    background: #e11b1b;
   }
 }
 
 .sigline{
-
-  color: #e11b1b;
+  padding-top: 10px;
+  color: #ffffff;
   font-size: 20px;
-  text-align: right;
+  text-align: center;
   font-family: Arial, Helvetica, sans-serif
+}
+
+.sigline2{
+  padding-left: 65px;
+  padding-top: 10px;
+  color: #ffffff;
+  font-size: 25px;
+  text-align: center;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
+
 }
 
 /* -----NAV END---- */
@@ -120,7 +188,7 @@ body {
 
   /* Typography */
   font-size: 50px;
-  font-weight: bold;
+  
   color: #e11b1b;
 }
 
@@ -140,9 +208,9 @@ body {
   padding-top: 20px;
 
   /* Typography */
-  font-size: 25px;
-  line-height: 35px;
-  color: #ffffff;
+  font-size: 20px;
+  line-height: 30px;
+  color: #e1e1e1;
 }
 
 .description-text {
@@ -191,35 +259,51 @@ body {
   width: 100%;
 
   /* Box-model */
-  padding: 15px 30px 78px;
+  padding: 15px 50px 78px;
 
   /* Positioning */
-  margin-top: 190px;
+  margin-top: 87px;
 
   /* Visual */
-  background-color: #fff;
+  background-color: #1c1a1a;
 }
+
+
 
 .imageNav-header {
   /* Positioning */
   margin-bottom: 15px;
   font-family: Georgia, Times, "Times New Roman", serif;
+  text-align: center;
 
   /* Typography */
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
   color: #e11b1b;
 }
 
+hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 3px;
+}
+
 .myGraph {
-  background-color: #ffffff;
+  background-color: #e1e1e1;
 }
 
 .imageNav-photo {
-  width: 140px;
+
+  padding-top: 20px;
+
+  width: 200px;
 
   /* Box-model */
-  height: 140px;
+  height: 220px;
 }
 
 .imageNav-photo:hover {
@@ -229,7 +313,7 @@ body {
 
 .imageNav-photo.active {
   /* Visuals */
-  border: 2px solid #4aaaa5;
+  border: 2px solid #e11b1b;
 }
 
 #images {
@@ -255,7 +339,7 @@ body {
   /* Typography */
   font-size: 20px;
   font-weight: bold;
-  color: #4aaaa5;
+  color: #e11b1b;
   text-align: center;
 }
 
@@ -281,7 +365,7 @@ body {
   margin-top: 15px;
 
   /* Typography */
-  color: #fff;
+  color: #e1e1e1;
 }
 
 .two-toned-footer-color {

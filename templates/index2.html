@@ -34,37 +34,16 @@
 
   <body>
     <!-- Start of navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid navbar-custom">
+    <div class="wrapper">
+      <!-- <div class="container-fluid navbar-custom"> -->
 
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="row">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle Navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <div class="col-xs-9 phone-nav">
-              <a class="navbar-brand" href="#" id="logo">Youtube</a>
-            </div>
-          </div>
-
-        </div>
-        </div><!-- /.container-fluid -->
-        
-        <div class="container">
-            <div class="col-md-12">
-                <div class="sigline">
-                    <p>
-                        Data Science Bootcamp | Southern Methodist Unversity | Dallas, TX
-                    </p>
-                </div>
-            </div>
+        <div class="hero text-center">
+          <h1>Youtube</h1>
+          <h3>US vs GB: We are watching you!</h3>
         </div>
 
-    </nav>
+      <!-- </div>/.container-fluid -->
+    <!-- </nav> -->
     <!-- End of navbar -->
 
     <!-- Start of container -->
@@ -72,14 +51,33 @@
       <section class="row">
         <div class="col-md-8">
           <article class="description-content">
-            <h1 class="description-header">A Closer Look at 10-year Youtube data</h1>
+            <h1 class="description-header">Executive Summary</h1>
             <hr class="description-hr"/>
             <img src="static/images/Fig5.png" alt="proposal" id="description-image2"/>
-            <p>When social media first burst onto the scene in the early 2000’s, it was only by small groups of people, mostly college students and there was a lot of skepticisim about its future.
-              This was mostly because people did not understand ow to monetize social media and turn it into something with staying power. For proof just ask people you kow if they still  have and account on Six Degrees, Friendster, or MySpace….exactly.
-              But oh how things have changed.</p>
-            <p>Today, social media is a huge part of our lives. We use it along with a whole host of other platforms, to connect with friends and family, learn about events happening in our area but and sell goods, start new relationships, review shops and resturants, and, most importantly, look at funny pictures of cats…
-              But just now much social media do we use? And how do we use it? And how can you use this information to grow your brand?</p>
+            <p>Youtube's popularity is undeniable, with its exponential growth brought about by the ease of video content production and easy access of viewing.
+              <br>
+              <br>This project's goal was to analyze a decade worth of Youtube data  on USA and GB. Our team looked into similarities, 
+							and differences, on  two countries' viewing preferences that may provide valuable insights to those who plans to expand their contents 
+              on either country.
+            </p>
+            <p>
+              The dataset used was obtained from <b>Kaggle</b>.
+              <br>It contains data for 10 countries with 41,000 entries each. The group decided to focus analysis on two countries - US and GB. 
+            </p>
+            <p><b>PostgreSQL </b>was used on this project to store all the data obtained.
+									<br>PostgreSQL is a powerful, open source object-relational database system that 
+                  has earned it a strong reputation for reliability, feature robustness, and performance.
+            </p>
+            <p><b>Python and Javascript </b>were the language behind this application.
+									<br>Python was used on the ETL process and the creation of this application.
+									<br>Javascript was utilized on rendering the vizualization with the aid of the Chart JS library.
+            </p>
+            <p>
+              <b>HTML and CSS </b>were used to give face to the application.
+									<br>A template was utilized to render a professional looking frontend.
+									Customization on the template was done to reflect the team's vision and goal.
+            </p>
+
           </article>
         </div>
         <div class="col-md-4">
@@ -87,7 +85,7 @@
           <!-- Start of Visualizations imageNav Area -->
           <section id="imageNav-area">
             <div class="imageNav-content">
-              <h2 class="imageNav-header">Analyses</h2>
+              <h2 class="imageNav-header">Visualizations</h2>
               <hr />
               <div id="images">
                 <a href="{{url_for('bar')}}"><img src="static/images/Fig1.png" alt="Average Views by Category" class="imageNav-photo"></a>
@@ -103,6 +101,7 @@
       </section>
     </div>
     <!-- End of container -->
+  </div>
 
     <!-- Start of footer -->
     <footer class="footer navbar-fixed-bottom">
@@ -112,12 +111,14 @@
       </p>
     </footer>
     <!-- End of footer -->
-
+  
     <!-- jQuery CDN -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
     <!-- Bootstrap CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
   </body>
 
 </html>

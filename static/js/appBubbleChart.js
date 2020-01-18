@@ -44,38 +44,27 @@ d3.json("/USlikes").then(function (usdata) {
         }
     console.log(USstorage)
 
-    var USLabels = [];
+    var Labels = [];
     for(var i = 0; i < USobjs.length; i++)
         { 
-          USLabels.push(usdata[i].category);
+          Labels.push(usdata[i].category);
         }
-    console.log(USLabels)
-
-    // USparsedata = [];
-    // for (var i = 0; i < USstorage.length; i++){
-    //   USparsedata.push({
-    //     label:USLabels[i],
-    //     data:USstorage[i],
-    //     backgroundColor: "rgb(241, 18, 18, 0.3)",
-    //     borderColor: "black"
-    //   });
-    // }
-    // console.log(USparsedata)
-
+    console.log(Labels)
 
     new Chart(document.getElementById("bubble-chart"), {
       type: 'bubble',
       data: {
-        // labels: labels,
+        labels: Labels,
+        // ["Music", "Entertainment", "Comedy", "People & Blogs","Film & Animation","Gaming","Sports","Howto & Style","News & Politics","Sci & Tech","Education","Pets & Animals","Autos & Vehicles","Travel & Events","Shows"],
         datasets: [
           {
-            labels: "GB",
+            label:"GB",
             data: GBstorage,
             backgroundColor: "rgb(18, 18, 241, 0.3)",
             borderColor: "black"
           }, 
           {
-            labels: "US",
+            label: "US",
             data: USstorage,
             backgroundColor: "rgb(241, 18, 18, 0.3)",
             borderColor: "black"
@@ -83,14 +72,14 @@ d3.json("/USlikes").then(function (usdata) {
         ]
       },
       options: {
-      //   tooltips: {
-      //     callbacks: {
-      //        label: function(tooltipItem, data) {
-      //           var label = data.labels[tooltipItem.index];
-      //           return label + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ')';
-      //        }
-      //     }
-      //  },
+        tooltips: {
+          callbacks: {
+             label: function(tooltipItem, data) {
+                var label = data.labels[tooltipItem.index];
+                return label + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ')';
+             }
+          }
+       },
         title: {
           display: true,
           text: 'Likes vs. Dislikes'
@@ -102,7 +91,7 @@ d3.json("/USlikes").then(function (usdata) {
               labelString: "Dislikes"
             },
             ticks: {
-              max: 1400,
+              max: 30000,
               min: 0,
             }
           }],
@@ -112,11 +101,12 @@ d3.json("/USlikes").then(function (usdata) {
               labelString: "Likes"
             },
             ticks: {
-              max: 60000,
+              max: 30000,
               min: 0,
             }
           }],
-          plugins: {
+          plugins: 
+          {
             colorschemes: {
               scheme: 'brewer.Paired12'
             }
