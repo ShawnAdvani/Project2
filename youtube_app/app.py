@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 
-rds_connection_string = "DATABASE_URL"
+rds_connection_string = "postgres:JusticeLeague1981!@localhost:5432/YouTube"
 engine = create_engine(f'postgresql://{rds_connection_string}')
 
 conn = engine.connect()
