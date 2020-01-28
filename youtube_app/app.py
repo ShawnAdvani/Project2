@@ -5,9 +5,11 @@ from sqlalchemy.ext.automap import automap_base
 import numpy as np
 import pandas as pd
 
+from flask.ext.heroku import Heroku
 
-rds_connection_string = "DATABASE_URL"
-engine = create_engine("postgres://dvvtdoymzqivwc:b068094a9e05b8136bbf6fe3cb9df4296302fc5083162804381eaa01b93da4ad@ec2-34-193-42-173.compute-1.amazonaws.com:5432/d4uu5lqtmpf560")
+
+rds_connection_string = "postgres:password@localhost5432/Youtube"
+engine = create_engine(f"postgresql://{rds_connection_string}")
 
 conn = engine.connect()
 # df = pd.read_sql('SELECT * FROM public."GBdata"', conn)
@@ -17,6 +19,8 @@ conn = engine.connect()
 
 
 app = Flask(__name__)
+
+heroku = Heroku(app)
 
 @app.route("/")
 def index():
